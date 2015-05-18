@@ -1,0 +1,44 @@
+body {
+    background-image : url("bgrnd.jpg");
+}
+
+#play{
+	border: 0; 
+	background: transparent;
+	position : relative;
+	right : 35%;
+	margin-top : 12%;
+}
+
+#highScore{
+	color : #CC0000;
+	font-size : 190%;
+	font-family : "Verdana";
+	position : absolute;
+	right : 8%;
+	top : 3%;
+	padding: 5px;
+}
+
+#chk{
+	-webkit-transform: scale(2.3);
+	color : #CC0000;
+	position: absolute;
+	font-family : "Verdana";
+	right : 10%;
+}
+
+#title{
+	-webkit-transform : rotate(-45deg);
+}
+
+canvas{
+	display: block;
+	position: absolute;
+	margin: auto;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	zIndex = 1;
+}
