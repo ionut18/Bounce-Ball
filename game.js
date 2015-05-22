@@ -65,6 +65,39 @@ ball = {
 	}
 };
 
+function create_canvas(){
+	canvas = document.createElement("canvas");
+	canvas.width = Width;
+	canvas.height = Height;
+	ctx = canvas.getContext("2d");
+	document.body.appendChild(canvas);
+}
+
+function first() {
+	set_title(document.getElementById("title"));
+	best = -1;
+	initialize();
+	create_canvas();
+	sw = document.getElementById("checkb");
+	sw.checked = false;
+	draw();
+	ctx.fillStyle = "#FFFFCC";
+	ball.draw();
+}
+
+function rand_ball(){	//get a random position where the ball to start
+	return Math.floor(Math.random() * 491);
+}
+
+function initialize() {	 //initialize the coords, score
+	score = 0;
+	lose = false;
+	bar.y = Height - bar.height - 10;
+	bar.x = (Width - bar.width)/2;
+	ball.y = 0;
+	ball.x = rand_ball();
+}
+
 function main() {
 	keyState = {};   // keep track of keyboard presses
 	document.addEventListener("keydown", function(evt) {
@@ -85,19 +118,6 @@ function main() {
 			window.requestAnimationFrame(repeat, canvas);
 	};
 	window.requestAnimationFrame(repeat, canvas);
-}
-
-function rand_ball(){	//get a random position where the ball to start
-	return Math.floor(Math.random() * 491);
-}
-
-function initialize() {	 //initialize the coords, score
-	score = 0;
-	lose = false;
-	bar.y = Height - bar.height - 10;
-	bar.x = (Width - bar.width)/2;
-	ball.y = 0;
-	ball.x = rand_ball();
 }
 
 function update() {  //update the ball position
@@ -128,26 +148,6 @@ function draw() {    //draw the canvas, the bar, the ball, the score
 	ctx.fillStyle = "#FF6600";
 	ctx.fillText("Score: " + score, 345, 32);
 	ctx.restore();
-}
-
-function create_canvas(){
-	canvas = document.createElement("canvas");
-	canvas.width = Width;
-	canvas.height = Height;
-	ctx = canvas.getContext("2d");
-	document.body.appendChild(canvas);
-}
-
-function first() {
-	set_title(document.getElementById("title"));
-	best = -1;
-	initialize();
-	create_canvas();
-	sw = document.getElementById("checkb");
-	sw.checked = false;
-	draw();
-	ctx.fillStyle = "#FFFFCC";
-	ball.draw();
 }
 
 function update_best() {
